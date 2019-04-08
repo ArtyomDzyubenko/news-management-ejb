@@ -3,6 +3,7 @@ package com.epam.newsmanagement.ejb.resource;
 import com.epam.newsmanagement.ejb.entity.News;
 import com.epam.newsmanagement.ejb.service.NewsService;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.json.Json;
@@ -20,7 +21,7 @@ import java.util.List;
 //@Consumes({MediaType.APPLICATION_JSON})
 public class NewsResource {
 
-    @Inject
+    @EJB
     NewsService newsService;
 
     @GET
