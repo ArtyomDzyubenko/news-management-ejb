@@ -9,8 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Date;
 
 @Entity
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+/*@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)*/
 @Table(name = "NEWS")
 public class News {
     private static final long serialVersionUID = 1L;
@@ -71,9 +71,5 @@ public class News {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public JsonObject toJson() {
-        return Json.createObjectBuilder().build();
     }
 }
