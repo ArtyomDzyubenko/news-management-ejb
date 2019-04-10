@@ -1,18 +1,12 @@
 package com.epam.newsmanagement.ejb.entity;
 
-import javax.json.Json;
-import javax.json.JsonObject;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
-/*@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)*/
 @Table(name = "NEWS")
-public class News {
+public class News implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -32,6 +26,9 @@ public class News {
 
     @Column(name = "NEWS_CONTENT")
     private String content;
+
+    @Column(name = "NEWS_USERNAME")
+    private String username;
 
     public Long getId() {
         return id;
@@ -71,5 +68,13 @@ public class News {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

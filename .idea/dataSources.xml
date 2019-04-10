@@ -10,5 +10,15 @@ C:/Users/Artem_Dzyubenko/IdeaProjects/newsmanagement_ejb/src/main/webapp/WEB-INF
       <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
       <jdbc-url>jdbc:oracle:thin:@localhost:1521:xe</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="persistUnit/Hibernate" uuid="a5a33d53-d845-4967-a378-4fa651ea1c23">
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <configured-by-url>true</configured-by-url>
+      <remarks>Hibernate
+
+C:/Users/Artem_Dzyubenko/IdeaProjects/newsmanagement_ejb/src/main/webapp/WEB-INF/classes/META-INF/persistence.xml</remarks>
+      <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@localhost:1521:xe</jdbc-url>
+    </data-source>
   </component>
 </project>

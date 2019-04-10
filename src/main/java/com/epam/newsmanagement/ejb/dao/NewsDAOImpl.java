@@ -15,11 +15,6 @@ public class NewsDAOImpl implements NewsDAO {
     @PersistenceContext(name = "persistUnit")
     private EntityManager entityManager;
 
-    /*private CriteriaQuery<News> getNewsCriteriaQuery() {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        return criteriaBuilder.createQuery(News.class);
-    }*/
-
     @Override
     public List<News> findAllNews() {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -38,7 +33,7 @@ public class NewsDAOImpl implements NewsDAO {
         criteriaQuery
                 .select(root)
                 .where(criteriaBuilder
-                        .like(root.get("USERNAME"), username));
+                        .like(root.get("username"), username));
 
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
@@ -51,7 +46,7 @@ public class NewsDAOImpl implements NewsDAO {
         criteriaQuery
                 .select(root)
                 .where(criteriaBuilder
-                        .equal(root.get("NEWS_ID"), id));
+                        .equal(root.get("id"), id));
 
         return entityManager.createQuery(criteriaQuery).getSingleResult();
     }
@@ -87,7 +82,7 @@ public class NewsDAOImpl implements NewsDAO {
         criteriaQuery
                 .select(root)
                 .where(criteriaBuilder
-                        .equal(root.get("NEWS_TITLE"), title));
+                        .equal(root.get("title"), title));
 
         return entityManager.createQuery(criteriaQuery).getResultList().size() > 0;
     }
