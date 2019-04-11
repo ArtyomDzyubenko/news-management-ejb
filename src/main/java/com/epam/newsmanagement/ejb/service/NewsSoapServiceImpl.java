@@ -6,13 +6,13 @@ import com.epam.newsmanagement.ejb.dtoConverter.NewsDTOConverter;
 import com.epam.newsmanagement.ejb.entity.News;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.transaction.Transactional;
+import javax.jws.WebService;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
-@Transactional
-public class NewsServiceImpl implements NewsService {
+@WebService(endpointInterface = "com.epam.newsmanagement.ejb.service.NewsSoapService")
+public class NewsSoapServiceImpl implements NewsSoapService {
 
     @EJB
     private NewsDAO newsDAO;
@@ -28,32 +28,21 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public NewsDTO findNewsById(Long id) {
-        News news = newsDAO.findNewsById(id);
-
-        return NewsDTOConverter.Entity2DTO(news);
+        return null;
     }
 
     @Override
     public boolean saveNews(NewsDTO news) {
-        boolean success = false;
-
-        /*newsDAO.saveNews(NewsDTOConverter.DTO2Entity(news));
-        return true;*/
-        if (newsDAO.isNewsExist(news.getTitle())){
-            return success;
-        } else {
-            newsDAO.saveNews(NewsDTOConverter.DTO2Entity(news));
-            return !success;
-        }
+        return false;
     }
 
     @Override
     public void updateNews(NewsDTO news) {
-        newsDAO.updateNews(NewsDTOConverter.DTO2Entity(news));
+
     }
 
     @Override
     public void deleteNewsList(List<Long> IDsList) {
-        newsDAO.deleteNewsList(IDsList);
+
     }
 }
