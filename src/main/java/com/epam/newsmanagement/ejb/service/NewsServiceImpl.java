@@ -37,8 +37,6 @@ public class NewsServiceImpl implements NewsService {
     public boolean saveNews(NewsDTO news) {
         boolean success = false;
 
-        /*newsDAO.saveNews(NewsDTOConverter.DTO2Entity(news));
-        return true;*/
         if (newsDAO.isNewsExist(news.getTitle())){
             return success;
         } else {
