@@ -26,13 +26,19 @@ public class NewsSoapServiceImpl implements NewsSoapService {
     }
 
     @Override
-    public boolean saveNews(NewsDTO news) {
-        return newsService.saveNews(news);
-    }
+    public boolean saveOrUpdateNews(NewsDTO news) {
+        boolean saved = true;
 
-    @Override
-    public void updateNews(NewsDTO news) {
+        if (news.getId() == 0) {
+            news.setId(null);
+            newsService.saveNews(news);
+
+            return saved;
+        }
+
         newsService.updateNews(news);
+
+        return !saved;
     }
 
     @Override

@@ -35,6 +35,7 @@
             <tr>
                 <td>
                     <%--<spring:message code="app.news.title"/>--%>
+                    title
                 </td>
                 <td>
                     <input type="text" name="title" ng-model="newsCtrl.news.title" size="98" min="3" max="100" required/>

@@ -17,7 +17,7 @@ public class NewsResource {
     NewsService newsService;
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public Response getAllNews() {
         List<NewsDTO> newsList = newsService.findAllNews();
 
@@ -26,7 +26,7 @@ public class NewsResource {
 
     @GET
     @Path("/id/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public Response getNewsById(@PathParam("id") Long id) {
         NewsDTO news = newsService.findNewsById(id);
 

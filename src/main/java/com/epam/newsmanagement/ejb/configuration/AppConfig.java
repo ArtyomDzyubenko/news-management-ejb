@@ -4,8 +4,8 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 @ApplicationPath("/api")
-public class AppResourceConfig extends Application {
-    public AppResourceConfig() {
+public class AppConfig extends Application {
+    public AppConfig() {
         //default config
     }
 }

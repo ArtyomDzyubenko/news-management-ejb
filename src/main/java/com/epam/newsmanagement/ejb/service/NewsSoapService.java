@@ -1,7 +1,6 @@
 package com.epam.newsmanagement.ejb.service;
 
 import com.epam.newsmanagement.ejb.dto.NewsDTO;
-
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
@@ -17,10 +16,7 @@ public interface NewsSoapService {
     NewsDTO findNewsById(Long id);
 
     @WebMethod
-    boolean saveNews(NewsDTO news);
-
-    @WebMethod
-    void updateNews(NewsDTO news);
+    boolean saveOrUpdateNews(NewsDTO news);
 
     @WebMethod
     void deleteNewsList(List<Long> IDsList);
