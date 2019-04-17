@@ -3,7 +3,7 @@ package com.epam.newsmanagement.ejb.dao;
 import com.epam.newsmanagement.ejb.entity.News;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -11,9 +11,8 @@ import java.util.List;
 
 @Stateless
 public class NewsDAOImpl implements NewsDAO {
-    private static EntityManager entityManager = Persistence
-            .createEntityManagerFactory("persistUnit")
-            .createEntityManager();
+    @PersistenceContext(unitName = "persistUnit")
+    private EntityManager entityManager;
 
     @Override
     public List<News> findAllNews() {

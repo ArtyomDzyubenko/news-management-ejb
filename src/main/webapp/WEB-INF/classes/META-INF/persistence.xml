@@ -5,6 +5,8 @@
         <jta-data-source>java:/OracleDS</jta-data-source>
         <class>com.epam.newsmanagement.ejb.entity.News</class>
         <class>com.epam.newsmanagement.ejb.dao.NewsDAOImpl</class>
+        <class>com.epam.newsmanagement.ejb.entity.Authority</class>
+        <class>com.epam.newsmanagement.ejb.dao.UserDAOImpl</class>
         <properties>
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
             <property name="hibernate.connection.username" value="news"/>

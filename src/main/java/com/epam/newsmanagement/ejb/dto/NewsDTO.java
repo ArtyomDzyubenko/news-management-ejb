@@ -24,6 +24,16 @@ public class NewsDTO {
     @Size(min = 3, max = 2048)
     private String content;
 
+    public String getUsername() {
+        return username;
+    }
+
+    private String username;
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%--<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>--%>
+
 
 <!DOCTYPE html>
 <html>
@@ -20,9 +20,9 @@
     <div>
         <h2><%--<spring:message code="app.welcome"/>${userName}--%></h2>
 
-        <%--<form action='<spring:url value="/logout"/>' method="post">
-            <input value="<spring:message code="app.news.button.logout"/>" type="submit">
-        </form>--%>
+        <form action='${pageContext.request.contextPath}/logout' method="post">
+            <input value="Logout" type="submit">
+        </form>
     </div>
 
     <div>

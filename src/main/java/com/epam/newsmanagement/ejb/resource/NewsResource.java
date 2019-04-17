@@ -4,6 +4,7 @@ import com.epam.newsmanagement.ejb.dto.NewsDTO;
 import com.epam.newsmanagement.ejb.service.NewsService;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -12,12 +13,13 @@ import java.util.List;
 @Stateless
 @Path("/news")
 public class NewsResource {
+    private final static String CHARSET = ";charset=utf-8";
 
     @EJB
     NewsService newsService;
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + CHARSET)
     public Response getAllNews() {
         List<NewsDTO> newsList = newsService.findAllNews();
 
@@ -26,7 +28,7 @@ public class NewsResource {
 
     @GET
     @Path("/id/{id}")
-    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + CHARSET)
     public Response getNewsById(@PathParam("id") Long id) {
         NewsDTO news = newsService.findNewsById(id);
 
@@ -35,7 +37,7 @@ public class NewsResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response.Status addNews(NewsDTO news) {
+    public Response.Status addNews(@Valid NewsDTO news) {
         boolean success = newsService.saveNews(news);
 
         if (!success) {
@@ -47,7 +49,7 @@ public class NewsResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response.Status updateNews(NewsDTO news) {
+    public Response.Status updateNews(@Valid NewsDTO news) {
         newsService.updateNews(news);
 
         return Response.Status.OK;

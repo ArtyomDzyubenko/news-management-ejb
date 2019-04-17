@@ -17,17 +17,13 @@ public class NewsDTOConverter {
     }
 
     public static News DTO2Entity(NewsDTO dto) {
-        /*String userName = SecurityContextHolder.getContext()
-                .getAuthentication()
-                .getName();*/
-
         News entity = new News();
         entity.setId(dto.getId());
         entity.setTitle(dto.getTitle());
         entity.setDate(Date.valueOf(dto.getDate()));
         entity.setBrief(dto.getBrief());
         entity.setContent(dto.getContent());
-        entity.setUsername("username");
+        entity.setUsername(dto.getUsername());
 
         return entity;
     }

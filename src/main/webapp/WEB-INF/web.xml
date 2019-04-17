@@ -4,7 +4,7 @@
     <display-name>News management</display-name>
 
     <welcome-file-list>
-        <welcome-file>/login.jsp</welcome-file>
+        <welcome-file>/news.jsp</welcome-file>
     </welcome-file-list>
 
     <!--Defining security constraint for type of roles available-->
@@ -12,6 +12,7 @@
         <web-resource-collection>
             <web-resource-name>administrator</web-resource-name>
             <url-pattern>/api/news/*</url-pattern>
+            <url-pattern>/news.jsp</url-pattern>
             <http-method>POST</http-method>
             <http-method>GET</http-method>
             <http-method>PUT</http-method>
@@ -26,10 +27,11 @@
         <web-resource-collection>
             <web-resource-name>user</web-resource-name>
             <url-pattern>/api/news/*</url-pattern>
-            <!--<http-method>POST</http-method>-->
+            <url-pattern>/news.jsp</url-pattern>
+            <http-method>POST</http-method>
             <http-method>GET</http-method>
-            <!--<http-method>PUT</http-method>
-            <http-method>DELETE</http-method>-->
+            <http-method>PUT</http-method>
+            <http-method>DELETE</http-method>
         </web-resource-collection>
         <auth-constraint>
             <role-name>ROLE_ADMIN</role-name>
@@ -39,13 +41,18 @@
     <!--Defining security constraint for type of roles available-->
 
     <!--Defining type of authenitcation mechanism-->
-    <login-config>
+    <!--<login-config>
         <auth-method>FORM</auth-method>
         <realm-name>newsmanagement</realm-name>
         <form-login-config>
             <form-login-page>/login.jsp</form-login-page>
             <form-error-page>/registration.jsp</form-error-page>
         </form-login-config>
+    </login-config>-->
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>newsmanagement</realm-name>
     </login-config>
     <!--Defining type of authenitcation mechanism-->
 
