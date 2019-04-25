@@ -1,49 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page isELIgnored ="false" %>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%--<spring:message code="app.title"/>--%></title>
+    <title></title>
 </head>
 <body>
     <div>
         <h1>REGISTRATION</h1>
     </div>
 
-	<form action="${pageContext.request.contextPath}/registerAction" method="post" modelAttribute="user">
-        <table>
-          <tr>
-            <td><%--<spring:message code="app.login.username"/>--%></td>
-            <td>
-                <%--<form:input path="username" type="text" min="3" max="20"/>--%>
-                <div class="msg-val"><form:errors path="username"/></div>
-            </td>
-          </tr>
-          <tr>
-            <td><%--<spring:message code="app.login.password"/></td>--%>
-            <td>
-                <%--<form:input path="password" type="password" min="3" max="20"/>--%>
-                <div class="msg-val"><%--<form:errors path="password"/>--%></div>
-            </td>
-          </tr>
-          <tr>
-            <td><button type="submit"><%--<spring:message code="app.register.button.reg"/>--%></button></td>
+    <form action="${pageContext.request.contextPath}/register" method="post">
+        <div>
+            <div>
+                Username:
+            </div>
+            <div>
+                <input type="text" name="username" min="3" max="20"/>
+            </div>
+        </div>
+        <div>
+            <div>
+                Password:
+            </div>
+            <div>
+                <input type="password" name="password" min="8" max="20"/>
+            </div>
+        </div>
+        <div>
+            <div>
+                <button type="submit">Register</button>
+            </div>
+        </div>
+    </form>
 
-          </tr>
-          <tr>
-              <td></td>
-              <td class="msg-val">
-                  <%--<c:if test="${userExist == true}">
-                      <spring:message code="app.register.user.exist"/>
-                  </c:if>--%>
-              </td>
-          </tr>
-        </table>
-  </form>
   <br/>
 </body>
 </html>

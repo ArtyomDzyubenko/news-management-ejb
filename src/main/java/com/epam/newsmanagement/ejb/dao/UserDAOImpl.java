@@ -1,6 +1,8 @@
 package com.epam.newsmanagement.ejb.dao;
 
 import com.epam.newsmanagement.ejb.entity.Authority;
+import com.epam.newsmanagement.ejb.entity.User;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,5 +26,10 @@ public class UserDAOImpl implements UserDAO {
                 .where(criteriaBuilder.like(root.get("username"), username));
 
         return entityManager.createQuery(criteriaQuery).getSingleResult();
+    }
+
+    @Override
+    public void saveUser(User user) {
+        entityManager.persist(user);
     }
 }
