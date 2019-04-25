@@ -1,8 +1,8 @@
 package com.epam.newsmanagement.ejb.servlet;
 
-import com.epam.newsmanagement.ejb.dao.UserDAO;
 import com.epam.newsmanagement.ejb.entity.Authority;
 import com.epam.newsmanagement.ejb.entity.User;
+import com.epam.newsmanagement.ejb.service.UserService;
 import com.epam.newsmanagement.ejb.util.MD5Encoder;
 import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +15,7 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
 
     @EJB
-    private UserDAO userDAO;
+    private UserService userService;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -30,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect("registration.jsp");
         }
 
-        userDAO.saveUser(getUser(username, password));
+        userService.saveUser(getUser(username, password));
 
         response.sendRedirect("login.jsp");
     }
