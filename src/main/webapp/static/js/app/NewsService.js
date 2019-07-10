@@ -34,7 +34,7 @@ angular.module('myApp').factory('NewsService', ['$http', '$q', function($http, $
             url: REST_SERVICE_URI,
             data: JSON.stringify(news),
             headers: {"Content-Type": "application/json"}
-        })/*.post(REST_SERVICE_URI, news)*/
+        })
             .then(
             function (response) {
                 deferred.resolve(response.data);

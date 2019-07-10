@@ -4,7 +4,6 @@ import com.epam.newsmanagement.ejb.dao.NewsDAO;
 import com.epam.newsmanagement.ejb.dao.UserDAO;
 import com.epam.newsmanagement.ejb.dto.NewsDTO;
 import com.epam.newsmanagement.ejb.dtoConverter.NewsDTOConverter;
-import com.epam.newsmanagement.ejb.entity.Authority;
 import com.epam.newsmanagement.ejb.entity.News;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
@@ -29,16 +28,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<NewsDTO> findAllNews() {
-        String username = context.getCallerPrincipal().getName();
-        Authority authority = userDAO.getUserAuthority(username);
-
-        List<News> newsList;
-
-        if (authority.getAuthority().contains("ADMIN")) {
-            newsList = newsDAO.findAllNews();
-        } else {
-            newsList = newsDAO.findUserNews(username);
-        }
+        List<News> newsList = newsDAO.findAllNews();;
 
         return newsList.stream()
                 .map(NewsDTOConverter::Entity2DTO)
@@ -67,11 +57,19 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public void updateNews(NewsDTO news) {
-        newsDAO.updateNews(NewsDTOConverter.DTO2Entity(news));
+        if (news.getUsername().equals(context.getCallerPrincipal().getName()) || context.isCallerInRole("ROLE_ADMIN")) {
+            newsDAO.updateNews(NewsDTOConverter.DTO2Entity(news));
+        }
     }
 
     @Override
-    public void deleteNewsList(List<Long> IDsList) {
-        newsDAO.deleteNewsList(IDsList);
+    public void deleteNewsList(List<News> newsList) {
+       newsList.forEach(this::deleteNews);
+    }
+
+    private void deleteNews(News news) {
+        if (news.getUsername().equals(context.getCallerPrincipal().getName()) || context.isCallerInRole("ROLE_ADMIN")) {
+            newsDAO.deleteNews(news);
+        }
     }
 }

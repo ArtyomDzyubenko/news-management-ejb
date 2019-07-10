@@ -4,20 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%--<spring:message code="app.title"/>--%></title>
+    <title></title>
 </head>
 <body ng-app="myApp">
 <div ng-controller="NewsController as newsCtrl">
     <div>
-        <h1><%--<spring:message code="app.title"/>--%></h1>
+        <h1></h1>
     </div>
 
     <div>
-        <a href='?lang=en'><%--<spring:message code="app.lang.en"/>--%></a> | <a href='?lang=ru'><%--<spring:message code="app.lang.ru"/>--%></a>
-    </div>
-
-    <div>
-        <h2><%--<spring:message code="app.welcome"/>${userName}--%></h2>
+        <h2></h2>
 
         <form action='${pageContext.request.contextPath}/logout' method="post">
             <input value="Logout" type="submit">
@@ -25,7 +21,7 @@
     </div>
 
     <div>
-        <h3><%--<spring:message code="app.news.form.add"/>--%></h3>
+        <h3></h3>
     </div>
 
     <form ng-submit="newsCtrl.submit()" name="newsForm" method="POST">
@@ -33,7 +29,6 @@
         <table>
             <tr>
                 <td>
-                    <%--<spring:message code="app.news.title"/>--%>
                     title
                 </td>
                 <td>
@@ -44,7 +39,6 @@
 
             <tr>
                 <td>
-                    <%--<spring:message code="app.news.date"/>--%>
                     date
                 </td>
                 <td>
@@ -55,7 +49,6 @@
 
             <tr>
                 <td>
-                    <%--<spring:message code="app.news.brief"/>--%>
                     brief
                 </td>
                 <td>
@@ -66,7 +59,6 @@
 
             <tr>
                 <td>
-                    <%--<spring:message code="app.news.content"/>--%>
                     content
                 </td>
                 <td>
@@ -77,8 +69,8 @@
 
             <tr>
                 <td colspan="2">
-                    <input type="submit" value="add/update<%--{{!newsCtrl.news.id ? '<spring:message code="app.news.button.add"/>' : '<spring:message code="app.news.button.update"/>'}}--%>"/>
-                    <input type="button" ng-click="newsCtrl.reset()" value="reset<%--<spring:message code="app.news.button.reset"/>--%>"/>
+                    <input type="submit" value="add/update"/>
+                    <input type="button" ng-click="newsCtrl.reset()" value="reset"/>
                 </td>
             </tr>
         </table>
@@ -86,29 +78,23 @@
 
     <table>
         <tr>
-            <%--<th>ID</th>
-            <th><spring:message code="app.news.title"/></th>
-            <th><spring:message code="app.news.date"/></th>
-            <th><spring:message code="app.news.brief"/></th>
-            <th><spring:message code="app.news.content"/></th>--%>
+            <th>Username</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Brief</th>
+            <th>Content</th>
 
-            <th>ID</th>
-            <th>title</th>
-            <th>date</th>
-            <th>brief</th>
-            <th>content</th>
-
-            <th><input type="button" ng-click="newsCtrl.removeNewsList()" value="delete<%--<spring:message code="app.news.button.delete"/>--%>"/></th>
+            <th><input type="button" ng-click="newsCtrl.removeNewsList()" value="delete"/></th>
         </tr>
         <tr ng-repeat="row in newsCtrl.newsList">
-            <td><span ng-bind="row.id"></span></td>
+            <td><span ng-bind="row.username"></span></td>
             <td><span ng-bind="row.title"></span></td>
             <td><span ng-bind="row.date"></span></td>
             <td><div span class="angular-with-newlines"><span ng-bind="row.brief"></span></div></td>
             <td><div span class="angular-with-newlines"><span class="angular-with-newlines" ng-bind="row.content"></span></div></td>
             <td><input name="delete" type="checkbox" ng-model="row.selected"/></td>
             <td>
-                <input type="button" ng-click="newsCtrl.edit(row.id)" value="edit<%--<spring:message code="app.news.button.edit"/>--%>"/>
+                <input type="button" ng-click="newsCtrl.edit(row.id)" value="edit"/>
             </td>
         </tr>
     </table>

@@ -1,6 +1,8 @@
 package com.epam.newsmanagement.ejb.service;
 
 import com.epam.newsmanagement.ejb.dto.NewsDTO;
+import com.epam.newsmanagement.ejb.entity.News;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
@@ -42,7 +44,7 @@ public class NewsSoapServiceImpl implements NewsSoapService {
     }
 
     @Override
-    public void deleteNewsList(List<Long> IDsList) {
-        newsService.deleteNewsList(IDsList);
+    public void deleteNewsList(List<News> newsList) {
+        newsService.deleteNewsList(newsList);
     }
 }

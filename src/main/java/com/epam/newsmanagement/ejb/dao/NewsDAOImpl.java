@@ -25,19 +25,6 @@ public class NewsDAOImpl implements NewsDAO {
     }
 
     @Override
-    public List<News> findUserNews(String username) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<News> criteriaQuery = criteriaBuilder.createQuery(News.class);
-        Root<News> root = criteriaQuery.from(News.class);
-        criteriaQuery
-                .select(root)
-                .where(criteriaBuilder
-                        .like(root.get("username"), username));
-
-        return entityManager.createQuery(criteriaQuery).getResultList();
-    }
-
-    @Override
     public News findNewsById(Long id) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<News> criteriaQuery = criteriaBuilder.createQuery(News.class);
@@ -67,10 +54,10 @@ public class NewsDAOImpl implements NewsDAO {
     }
 
     @Override
-    public void deleteNewsList(List<Long> IDsList) {
+    public void deleteNews(News news) {
         String hql = "DELETE from News as nws WHERE nws.id = ?1";
 
-        IDsList.forEach(item -> entityManager.createQuery(hql).setParameter(1, item).executeUpdate());
+        entityManager.createQuery(hql).setParameter(1, news.getId()).executeUpdate();
     }
 
     @Override
@@ -85,6 +72,4 @@ public class NewsDAOImpl implements NewsDAO {
 
         return entityManager.createQuery(criteriaQuery).getResultList().size() > 0;
     }
-
-
 }
