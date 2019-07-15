@@ -28,7 +28,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<NewsDTO> findAllNews() {
-        List<News> newsList = newsDAO.findAllNews();;
+        List<News> newsList = newsDAO.findAllNews();
 
         return newsList.stream()
                 .map(NewsDTOConverter::Entity2DTO)
@@ -57,19 +57,25 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public void updateNews(NewsDTO news) {
-        if (news.getUsername().equals(context.getCallerPrincipal().getName()) || context.isCallerInRole("ROLE_ADMIN")) {
+        if (actionAllowed(news)) {
             newsDAO.updateNews(NewsDTOConverter.DTO2Entity(news));
         }
     }
 
     @Override
-    public void deleteNewsList(List<News> newsList) {
+    public void deleteNewsList(List<NewsDTO> newsList) {
        newsList.forEach(this::deleteNews);
     }
 
-    private void deleteNews(News news) {
-        if (news.getUsername().equals(context.getCallerPrincipal().getName()) || context.isCallerInRole("ROLE_ADMIN")) {
-            newsDAO.deleteNews(news);
+    private void deleteNews(NewsDTO news) {
+        if (actionAllowed(news)) {
+            newsDAO.deleteNews(NewsDTOConverter.DTO2Entity(news));
         }
+    }
+
+    private boolean actionAllowed(NewsDTO news) {
+        return news.getUsername().equals(context.getCallerPrincipal().getName()) ||
+                userDAO.getUserAuthority(context.getCallerPrincipal().getName()).getAuthority().equals("ROLE_ADMIN");
+
     }
 }

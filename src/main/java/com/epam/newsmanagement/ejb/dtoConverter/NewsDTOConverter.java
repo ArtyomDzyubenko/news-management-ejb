@@ -2,7 +2,6 @@ package com.epam.newsmanagement.ejb.dtoConverter;
 
 import com.epam.newsmanagement.ejb.dto.NewsDTO;
 import com.epam.newsmanagement.ejb.entity.News;
-
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import java.sql.Date;

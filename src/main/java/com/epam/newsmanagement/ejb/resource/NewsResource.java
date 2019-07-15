@@ -1,7 +1,6 @@
 package com.epam.newsmanagement.ejb.resource;
 
 import com.epam.newsmanagement.ejb.dto.NewsDTO;
-import com.epam.newsmanagement.ejb.entity.News;
 import com.epam.newsmanagement.ejb.service.NewsService;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -58,7 +57,7 @@ public class NewsResource {
 
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response.Status deleteNewsList(List<News> newsList) {
+    public Response.Status deleteNewsList(List<NewsDTO> newsList) {
         newsService.deleteNewsList(newsList);
 
         return Response.Status.NO_CONTENT;

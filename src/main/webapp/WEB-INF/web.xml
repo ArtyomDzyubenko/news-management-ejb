@@ -7,39 +7,6 @@
         <welcome-file>/news.jsp</welcome-file>
     </welcome-file-list>
 
-    <!--Defining security constraint for type of roles available-->
-    <!--<security-constraint>
-        <web-resource-collection>
-            <web-resource-name>administrator</web-resource-name>
-            <url-pattern>/api/news/*</url-pattern>
-            <url-pattern>/news.jsp</url-pattern>
-            <http-method>POST</http-method>
-            <http-method>GET</http-method>
-            <http-method>PUT</http-method>
-            <http-method>DELETE</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>ROLE_ADMIN</role-name>
-        </auth-constraint>
-    </security-constraint>
-
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>user</web-resource-name>
-            <url-pattern>/api/news/*</url-pattern>
-            <url-pattern>/news.jsp</url-pattern>
-            <http-method>POST</http-method>
-            <http-method>GET</http-method>
-            <http-method>PUT</http-method>
-            <http-method>DELETE</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>ROLE_ADMIN</role-name>
-            <role-name>ROLE_USER</role-name>
-        </auth-constraint>
-    </security-constraint>-->
-    <!--Defining security constraint for type of roles available-->
-
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>news</web-resource-name>
@@ -72,7 +39,7 @@
     </login-config>-->
     <!--Defining type of authenitcation mechanism-->
 
-    <!--Denining security role-->
+    <!--Defining security role-->
     <security-role>
         <role-name>ROLE_ADMIN</role-name>
     </security-role>
@@ -80,5 +47,5 @@
     <security-role>
         <role-name>ROLE_USER</role-name>
     </security-role>
-    <!--Denining security role-->
+    <!--Defining security role-->
 </web-app>
